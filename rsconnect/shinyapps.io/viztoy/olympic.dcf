@@ -5,7 +5,7 @@ account: viztoy
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 12459961
-bundleId: 8989082
+bundleId: 8989098
 url: https://viztoy.shinyapps.io/olympic/
 version: 1
 asMultiple: FALSE

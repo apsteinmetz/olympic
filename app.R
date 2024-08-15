@@ -106,13 +106,14 @@ about_page <- page_fillable(
           "Sort the results on any column."),
         h2(strong("Data sources:")),
         a(href = "https://www.kaggle.com/datasets/piterfm/paris-2024-olympic-summer-games",
-          "Paris 2024 Olympic Results"),
+          "Paris 2024 Olympic Results from Kaggle"),
         a(href = "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD","GDP and Population from World Bank Open Data"),
         a(href = "https://flagpedia.net/download/api","Country flags from flagpedia.net"),
         p(strong("Created by Art Steinmetz using R and Shiny from"), 
-          a(href = "https://www.posit.co", "Posit.co"),
+          a(href = "https://www.posit.co", "Posit.co. ")),
+          p(a(href = "https://github.com/apsteinmetz/olympic.git","Code on Github. "),
           "See more of my work at",
-          a(href = "https://outsiderdata.netlify.app/", "outsiderdata.net")
+          a(href = "https://outsiderdata.netlify.app/", "outsiderdata.net.")
           )
         
 
