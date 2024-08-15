@@ -1,51 +1,204 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    https://shiny.posit.co/
-#
-
+# Olympic country  ranker on user selected weights
 library(shiny)
+library(bslib)
+library(dplyr)
+library(readr)
+library(gt)
 
-# Define UI for application that draws a histogram
-ui <- fluidPage(
 
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
+medal_counts <- read_csv(here::here("data/medal_counts_iso.csv")) |> 
+    select(-Total) |>
+    pivot_longer(cols = -c(country_code), names_to = "Medal", values_to = "Count") |> 
+    mutate(Medal = str_remove(Medal, " Medal")) |> 
+    mutate(Medal = as_factor(Medal)) |> 
+    mutate(country_code = as_factor(country_code))
 
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
+# medal_counts
 
-        # Show a plot of the generated distribution
-        mainPanel(
-           plotOutput("distPlot")
+macro_data <- read_csv(here::here("data/macro_data.csv")) |> 
+    mutate(country_code = as_factor(country_code))
+
+medal_weights <- tibble(
+    Medal = as_factor(c("Gold", "Silver", "Bronze")),
+    Weight = c(3, 2, 1)
+)
+
+medals_data <- left_join(medal_counts, medal_weights, by = "Medal") 
+
+# medals_data
+
+change_weights <- function(dt=medals_data,g = 1,s = 1, b = 1){
+    medal_weights <- tibble(
+        Medal = c("Gold", "Silver", "Bronze"),
+        Weight = c(g, s, b)
+    )
+    return(left_join(select(dt,-Weight), medal_weights, by = "Medal"))
+}
+
+
+sort_countries <- function(dt,sort_by = c("medal_wgt","pop_wgt","gdp_wgt","all_wgt")){
+        # swtich based on sort_by
+        dt <- case_when(
+            sort_by == "medal_wgt" ~ arrange(dt, desc(Score_Wgt)),
+            sort_by == "pop_wgt" ~ arrange(dt,desc(Score_per_MM_pop)),
+            sort_by == "gdp_wgt" ~ arrange(dt,desc(Score_per_GDP_USD_BN)),
+            sort_by == "all_wgt" ~ arrange(dt,desc(Score_per_capita_GDP))
         )
+    return(dt)
+}
+
+# predefined UI elements -------------------------------------------------------
+sidebar_inputs <-   sidebar(
+    h3("Select Weights for Medals\n",
+        "and Sorting Criterion"),
+    p("Weights of 1 will show absolute number of medals."),
+    sliderInput(
+        "gw",
+        "Gold Weight:",
+        min = 0,
+        max = 10,
+        value = 3
+    ),
+    sliderInput(
+        "sw",
+        "Silver Weight:",
+        min = 0,
+        max = 10,
+        value = 2
+    ),
+    sliderInput(
+        "bw",
+        "Bronze Weight:",
+        min = 0,
+        max = 10,
+        value = 1
+    ),
+    # add radio button
+    radioButtons(
+        "sorting",
+        "Sort On:",
+        choices = c("medal_wgt", "pop_wgt", "gdp_wgt", "all_wgt")
     )
 )
 
-# Define server logic required to draw a histogram
+banner <- div(img(
+    src = "banner.png",
+    height = 80,
+    # width = 20,
+    style = "margin:1px 1px"),
+    "My Country is The Best!")
+
+about_page <- page_fillable(
+    title = "About",
+    card(
+        card_header(h2(strong("Paris 2024 Olympic Medal Country Ranker"))),
+        p("Chose your own relative weights for Gold, Silver and Bronze",
+          "Also weight by country, population and/or GDP.",
+          "Heatmapped column reflects weighting choice.",
+          "Sort the results on any column."),
+        h2(strong("Data sources:")),
+        a(href = "https://www.kaggle.com/datasets/piterfm/paris-2024-olympic-summer-games",
+          "Paris 2024 Olympic Results"),
+        a(href = "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD","GDP and Population from World Bank Open Data"),
+        p(strong("Created by Art Steinmetz using R and Shiny from"), 
+          a(href = "https://www.posit.co", "Posit.co"),
+          "See more of my work at",
+          a(href = "https://outsiderdata.netlify.app/", "outsiderdata.net")
+          )
+        
+
+        
+        
+        
+    )
+)
+
+# UI ---------------------------------------------------------------------------
+ui <- page_navbar(
+    # Application title
+    title = banner,
+    nav_panel(
+        "Medal Scoreboard",
+        page_sidebar(
+            # Sidebar with a slider input for number of bins
+            sidebar = sidebar_inputs,
+            layout_columns(col_widths = c(9, 3),
+                           card(gt_output("table")),
+                           card(card(plotOutput("gdpscatter")),
+                                card(plotOutput("popscatter"))
+                                )
+                           )
+        )
+    ),
+    nav_panel("About", about_page)
+)
+
+# Server -----------------------------------------------------------------------
 server <- function(input, output) {
+    score_countries <- reactive({
+            medals_data |> 
+            change_weights(g = input$gw, s = input$sw, b = input$bw) |> 
+            mutate(Score_Wgt = Count * Weight) |>
+            summarize(.by = c(country_code), across(starts_with("Score"),\(x) sum(x, na.rm = TRUE))) |> 
+            left_join(macro_data, by = "country_code") |> 
+            select(-country_code) |> 
+            na.omit() |>
+            # score per million people
+            mutate(Score_per_MM_pop = (Score_Wgt/population)) |>
+            # score per $billion GDP
+            mutate(Score_per_GDP_USD_BN = (Score_Wgt/GDP)) |>
+            mutate(Score_per_capita_GDP = (Score_Wgt/GDP/population)) |> 
+            select(country_name,starts_with("Score"),everything()) |>
+            sort_countries(sort_by = input$sorting)
+    })
+    col_to_color <- reactive({
+        switch(input$sorting,
+            "medal_wgt" = "Score_Wgt",
+            "pop_wgt" = "Score_per_MM_pop",
+            "gdp_wgt" = "Score_per_GDP_USD_BN",
+            "all_wgt" = "Score_per_capita_GDP"
+        )
+    })
+    
+    output$table <- render_gt(
+        score_countries() |>
+            gt() |>
+            opt_interactive(use_pagination = FALSE,use_resizers = TRUE) |> 
+            fmt_number(columns = c(Score_Wgt,GDP,population), decimals = 0) |>
+            fmt_number(
+                columns = c(Score_per_MM_pop, Score_per_GDP_USD_BN, Score_per_capita_GDP),
+                decimals = 2
+            ) |>
+            data_color(
+                columns = c(col_to_color()),
+                method = "numeric",
+                palette = "viridis") |> 
+            tab_header(title = "Medal Scoreboard") |> 
+            cols_label(
+                Score_Wgt = "Medal Score",
+                Score_per_MM_pop = "Pop Score",
+                Score_per_GDP_USD_BN = "GDP Score",
+                Score_per_capita_GDP = "Per Capita GDP Score",
+                country_name = "Country",
+                population = "Pop.(MM)",
+                GDP = "GDP ($ BN)")
 
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white',
-             xlab = 'Waiting time to next eruption (in mins)',
-             main = 'Histogram of waiting times')
+    )
+    output$gdpscatter <- renderPlot({
+        ggplot(score_countries(), aes(x = GDP, y = Score_Wgt)) +
+            geom_point() +
+            geom_smooth() +
+            scale_x_log10(labels = scales::dollar) +
+            labs(title = "GDP vs Medal Score", x = "GDP (Log USD Billions)", y = "Medal Score")
+    })
+    output$popscatter <- renderPlot({
+        ggplot(score_countries(), aes(x = population, y = Score_Wgt)) +
+            geom_point() +
+            geom_smooth() +
+            scale_x_log10() +
+            labs(title = "Population vs Medal Score", x = "Population (Log Millions)", y = "Medal Score")
     })
 }
 
-# Run the application 
+# run app ----------------------------------------------------------------------
 shinyApp(ui = ui, server = server)
