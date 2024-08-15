@@ -1,13 +1,21 @@
 # Olympic country  ranker on user selected weights
 library(shiny)
 library(bslib)
-library(dplyr)
-library(readr)
+library(tidyverse)
 library(gt)
+library(ggrepel)
 
+# countries_to_annotate <- c("USA", "CHN", "RUS", "FRA", "GER", "GBR", "JPN",
+#                           "AUS", "CAN", "BRA", "IND", "MEX", "ARG", "DOM",
+#                           "NZL","GEO","JAM")
+
+# vector of country names from countries to annotate
+countries_to_annotate <- c("United States", "China", "Russia", "France", "Germany", "United Kingdom", "Japan",
+                   "Australia", "Canada", "Brazil", "India", "Mexico", "Argentina", "Dominica",
+                   "New Zealand","Georgia","Jamaica")
 
 medal_counts <- read_csv(here::here("data/medal_counts_iso.csv")) |> 
-    select(-Total) |>
+    select(-Total,-country_name) |>
     pivot_longer(cols = -c(country_code), names_to = "Medal", values_to = "Count") |> 
     mutate(Medal = str_remove(Medal, " Medal")) |> 
     mutate(Medal = as_factor(Medal)) |> 
@@ -16,7 +24,7 @@ medal_counts <- read_csv(here::here("data/medal_counts_iso.csv")) |>
 # medal_counts
 
 macro_data <- read_csv(here::here("data/macro_data.csv")) |> 
-    mutate(country_code = as_factor(country_code))
+    mutate(country_code = as.factor(country_code))
 
 medal_weights <- tibble(
     Medal = as_factor(c("Gold", "Silver", "Bronze")),
@@ -100,6 +108,7 @@ about_page <- page_fillable(
         a(href = "https://www.kaggle.com/datasets/piterfm/paris-2024-olympic-summer-games",
           "Paris 2024 Olympic Results"),
         a(href = "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD","GDP and Population from World Bank Open Data"),
+        a(href = "https://flagpedia.net/download/api","Country flags from flagpedia.net"),
         p(strong("Created by Art Steinmetz using R and Shiny from"), 
           a(href = "https://www.posit.co", "Posit.co"),
           "See more of my work at",
@@ -148,7 +157,7 @@ server <- function(input, output) {
             # score per $billion GDP
             mutate(Score_per_GDP_USD_BN = (Score_Wgt/GDP)) |>
             mutate(Score_per_capita_GDP = (Score_Wgt/GDP/population)) |> 
-            select(country_name,starts_with("Score"),everything()) |>
+            select(flag_url,country_name,starts_with("Score"),everything()) |>
             sort_countries(sort_by = input$sorting)
     })
     col_to_color <- reactive({
@@ -164,7 +173,8 @@ server <- function(input, output) {
         score_countries() |>
             gt() |>
             opt_interactive(use_pagination = FALSE,use_resizers = TRUE) |> 
-            fmt_number(columns = c(Score_Wgt,GDP,population), decimals = 0) |>
+            fmt_number(columns = c(Score_Wgt), decimals = 0) |>
+            fmt_number(columns = c(population,GDP), decimals = 1) |>
             fmt_number(
                 columns = c(Score_per_MM_pop, Score_per_GDP_USD_BN, Score_per_capita_GDP),
                 decimals = 2
@@ -174,7 +184,12 @@ server <- function(input, output) {
                 method = "numeric",
                 palette = "viridis") |> 
             tab_header(title = "Medal Scoreboard") |> 
+            text_transform(
+                locations = cells_body(columns = flag_url),
+                fn = function(x) { web_image(url = x, height = 30) }
+            ) |>
             cols_label(
+                flag_url = "Flag",
                 Score_Wgt = "Medal Score",
                 Score_per_MM_pop = "Pop Score",
                 Score_per_GDP_USD_BN = "GDP Score",
@@ -188,6 +203,12 @@ server <- function(input, output) {
         ggplot(score_countries(), aes(x = GDP, y = Score_Wgt)) +
             geom_point() +
             geom_smooth() +
+            # label points from countries_to_annotate
+            geom_text_repel(
+                data = score_countries() |> 
+                    filter(country_name %in% countries_to_annotate),
+                aes(label = country_name)
+            ) +
             scale_x_log10(labels = scales::dollar) +
             labs(title = "GDP vs Medal Score", x = "GDP (Log USD Billions)", y = "Medal Score")
     })
@@ -195,6 +216,11 @@ server <- function(input, output) {
         ggplot(score_countries(), aes(x = population, y = Score_Wgt)) +
             geom_point() +
             geom_smooth() +
+            geom_text_repel(
+                data = score_countries() |> 
+                    filter(country_name %in% countries_to_annotate),
+                aes(label = country_name)
+            ) +
             scale_x_log10() +
             labs(title = "Population vs Medal Score", x = "Population (Log Millions)", y = "Medal Score")
     })

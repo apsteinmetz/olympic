@@ -1,89 +1,90 @@
-country_code,country_name,GDP,population
-USA,United States,18295.019,333.287557
-CHN,China,11061.572618579,1412.175
-JPN,Japan,4444.930651964,125.124989
-AUS,Australia,1351.768945139,25.978935
-FRA,France,2439.188643163,67.93566
-NLD,Netherlands,765.572770634,17.70309
-GBR,United Kingdom,2927.911140917,66.971411
-KOR,"Korea, Rep.",1466.038936206,51.628117
-ITA,Italy,1836.637711061,58.856847
-DEU,Germany,3357.585719352,84.079811
-NZL,New Zealand,178.104220785,5.1241
-CAN,Canada,1556.508816217,38.929902
-UZB,Uzbekistan,86.196264755,35.6481
-HUN,Hungary,125.174166987,9.683505
-ESP,Spain,1196.15697128,47.615034
-SWE,Sweden,505.10378135,10.486941
-KEN,Kenya,70.120446897,54.027487
-NOR,Norway,388.159512246,5.457127
-IRL,Ireland,292.364226872,5.086988
-BRA,Brazil,1802.212206905,215.313498
-IRN,Iran (Islamic Republic),408.212917875,88.55057
-UKR,Ukraine,91.030967789,38
-ROU,Romania,177.883883009,18.956666
-GEO,Georgia,15.223796149,3.712502
-SRB,Serbia,39.655949731,6.760087
-BGR,Bulgaria,50.811995689,6.465097
-CZE,Czechia,188.03305046,10.526073
-DNK,Denmark,302.673070847,5.903037
-AZE,Azerbaijan,53.076235355,10.175016
-HRV,Croatia,51.011170112,3.854
-CUB,Cuba,87.1328,11.212191
-BEL,Belgium,462.335574841,11.669446
-BRN,Brunei Darussalam,12.930291488,0.449002
-SVN,Slovenia,43.107506024,2.108732
-TWN,Taiwan,791.61,23.57
-AUT,Austria,381.971148531,9.042528
-HKG,Hong Kong,309.385622601,7.3461
-PHL,Philippines,306.445871247,115.559009
-DZA,Algeria,187.493855609,44.903225
-IDN,Indonesia,860.854232686,275.501339
-POL,Poland,477.111287969,37.561599
-ISR,Israel,303.414276832,9.5506
-KAZ,Kazakhstan,184.388404706,19.621972
-JAM,Jamaica,14.188936918,2.827377
-ZAF,South Africa,346.709790459,59.893885
-THA,Thailand,401.296238228,71.69703
-ETH,Ethiopia,64.589328551,123.379924
-CHE,Switzerland,694.11818638,8.769741
-ECU,Ecuador,97.209558,18.001
-PRT,Portugal,199.394066525,10.379007
-GRC,Greece,195.683527003,10.566531
-ARG,Argentina,594.749285413,46.23483
-EGY,Egypt,329.366576819,110.990103
-TUN,Tunisia,45.779494042,12.356117
-BWA,Botswana,13.530748845,2.630296
-LCA,St. Lucia,1.807640741,0.179857
-UGA,Uganda,32.38718373,47.249585
-DOM,Dominican Republic,71.164826837,11.228821
-GUM,Guam,5.799,0.171774
-MAR,Morocco,110.413823842,37.457971
-DMA,Dominica,0.540737037,0.072737
-PAK,Pakistan,299.963590535,235.824862
-TUR,Turkiye,864.313810469,85.341241
-MEX,Mexico,1213.294467717,127.504125
-ARM,Armenia,10.553337518,2.780469
-COL,Colombia,293.492370193,51.874024
-KGZ,Kyrgyz Republic,6.678177512,6.8033
-PRK,"Korea, Dem. People's Rep.",NA,26.069416
-LTU,Lithuania,41.43553334,2.833
-IND,India,2103.588360044,1417.173173
-MDA,Moldova,7.797667197,2.592477
-CYP,Cyprus,19.909269064,1.251488
-FJI,Fiji,4.682479894,0.929766
-JOR,Jordan,38.587017887,11.285869
-MNG,Mongolia,11.619892591,3.398366
-PAN,Panama,54.0918,4.408581
-TJK,Tajikistan,8.271431485,9.952787
-ALB,Albania,11.386853113,2.775634
-GRL,Greenland,2.499113023,0.056661
-MYS,Malaysia,301.355266965,33.938221
-PRI,Puerto Rico,103.3755,3.221789
-CIV,Cote d'Ivoire,45.815005169,28.160542
-CPV,Cabo Verde,1.74985762,0.593149
-PER,Peru,189.802976286,34.049588
-QAT,Qatar,161.739955577,2.695122
-SGP,Singapore,307.998545269,5.637022
-SVK,Slovak Republic,88.900883131,5.431752
-ZMB,Zambia,21.251216799,20.017675
+country_code,country_name,GDP,population,flag_url
+ALB,Albania,11.386853113,2.775634,https://flagcdn.com/w40/al.png
+DZA,Algeria,187.493855609,44.903225,https://flagcdn.com/w40/dz.png
+ARG,Argentina,594.749285413,46.23483,https://flagcdn.com/w40/ar.png
+ARM,Armenia,10.553337518,2.780469,https://flagcdn.com/w40/am.png
+AUS,Australia,1351.768945139,25.978935,https://flagcdn.com/w40/au.png
+AUT,Austria,381.971148531,9.042528,https://flagcdn.com/w40/at.png
+AZE,Azerbaijan,53.076235355,10.175016,https://flagcdn.com/w40/az.png
+BHR,Bahrain,31.125851064,1.472233,https://flagcdn.com/w40/bh.png
+BEL,Belgium,462.335574841,11.669446,https://flagcdn.com/w40/be.png
+BWA,Botswana,13.530748845,2.630296,https://flagcdn.com/w40/bw.png
+BRA,Brazil,1802.212206905,215.313498,https://flagcdn.com/w40/br.png
+BGR,Bulgaria,50.811995689,6.465097,https://flagcdn.com/w40/bg.png
+CPV,Cabo Verde,1.74985762,0.593149,https://flagcdn.com/w40/cv.png
+CAN,Canada,1556.508816217,38.929902,https://flagcdn.com/w40/ca.png
+CHL,Chile,242.450355828,19.603733,https://flagcdn.com/w40/cl.png
+CHN,China,11061.572618579,1412.175,https://flagcdn.com/w40/cn.png
+COL,Colombia,293.492370193,51.874024,https://flagcdn.com/w40/co.png
+CIV,Cote d'Ivoire,45.815005169,28.160542,https://flagcdn.com/w40/ci.png
+HRV,Croatia,51.011170112,3.854,https://flagcdn.com/w40/hr.png
+CUB,Cuba,87.1328,11.212191,https://flagcdn.com/w40/cu.png
+CYP,Cyprus,19.909269064,1.251488,https://flagcdn.com/w40/cy.png
+CZE,Czechia,188.03305046,10.526073,https://flagcdn.com/w40/cz.png
+DNK,Denmark,302.673070847,5.903037,https://flagcdn.com/w40/dk.png
+DMA,Dominica,0.540737037,0.072737,https://flagcdn.com/w40/dm.png
+DOM,Dominican Republic,71.164826837,11.228821,https://flagcdn.com/w40/do.png
+ECU,Ecuador,97.209558,18.001,https://flagcdn.com/w40/ec.png
+EGY,Egypt,329.366576819,110.990103,https://flagcdn.com/w40/eg.png
+ETH,Ethiopia,64.589328551,123.379924,https://flagcdn.com/w40/et.png
+FJI,Fiji,4.682479894,0.929766,https://flagcdn.com/w40/fj.png
+FRA,France,2439.188643163,67.93566,https://flagcdn.com/w40/fr.png
+GEO,Georgia,15.223796149,3.712502,https://flagcdn.com/w40/ge.png
+DEU,Germany,3357.585719352,84.079811,https://flagcdn.com/w40/de.png
+GRC,Greece,195.683527003,10.566531,https://flagcdn.com/w40/gr.png
+GRD,Grenada,0.997007407,0.125438,https://flagcdn.com/w40/gd.png
+GTM,Guatemala,62.186064719,17.357886,https://flagcdn.com/w40/gt.png
+HKG,Hong Kong,309.385622601,7.3461,https://flagcdn.com/w40/hk.png
+HUN,Hungary,125.174166987,9.683505,https://flagcdn.com/w40/hu.png
+IND,India,2103.588360044,1417.173173,https://flagcdn.com/w40/in.png
+IDN,Indonesia,860.854232686,275.501339,https://flagcdn.com/w40/id.png
+IRN,Iran (Islamic Republic),408.212917875,88.55057,https://flagcdn.com/w40/ir.png
+IRL,Ireland,292.364226872,5.086988,https://flagcdn.com/w40/ie.png
+ISR,Israel,303.414276832,9.5506,https://flagcdn.com/w40/il.png
+ITA,Italy,1836.637711061,58.856847,https://flagcdn.com/w40/it.png
+JAM,Jamaica,14.188936918,2.827377,https://flagcdn.com/w40/jm.png
+JPN,Japan,4444.930651964,125.124989,https://flagcdn.com/w40/jp.png
+JOR,Jordan,38.587017887,11.285869,https://flagcdn.com/w40/jo.png
+KAZ,Kazakhstan,184.388404706,19.621972,https://flagcdn.com/w40/kz.png
+KEN,Kenya,70.120446897,54.027487,https://flagcdn.com/w40/ke.png
+PRK,"Korea, Dem. People's Rep.",NA,26.069416,https://flagcdn.com/w40/kp.png
+KOR,"Korea, Rep.",1466.038936206,51.628117,https://flagcdn.com/w40/kr.png
+KGZ,Kyrgyz Republic,6.678177512,6.8033,https://flagcdn.com/w40/kg.png
+LTU,Lithuania,41.43553334,2.833,https://flagcdn.com/w40/lt.png
+MYS,Malaysia,301.355266965,33.938221,https://flagcdn.com/w40/my.png
+MEX,Mexico,1213.294467717,127.504125,https://flagcdn.com/w40/mx.png
+MDA,Moldova,7.797667197,2.592477,https://flagcdn.com/w40/md.png
+MNG,Mongolia,11.619892591,3.398366,https://flagcdn.com/w40/mn.png
+MAR,Morocco,110.413823842,37.457971,https://flagcdn.com/w40/ma.png
+NLD,Netherlands,765.572770634,17.70309,https://flagcdn.com/w40/nl.png
+NZL,New Zealand,178.104220785,5.1241,https://flagcdn.com/w40/nz.png
+NOR,Norway,388.159512246,5.457127,https://flagcdn.com/w40/no.png
+PAK,Pakistan,299.963590535,235.824862,https://flagcdn.com/w40/pk.png
+PAN,Panama,54.0918,4.408581,https://flagcdn.com/w40/pa.png
+PER,Peru,189.802976286,34.049588,https://flagcdn.com/w40/pe.png
+PHL,Philippines,306.445871247,115.559009,https://flagcdn.com/w40/ph.png
+POL,Poland,477.111287969,37.561599,https://flagcdn.com/w40/pl.png
+PRT,Portugal,199.394066525,10.379007,https://flagcdn.com/w40/pt.png
+PRI,Puerto Rico,103.3755,3.221789,https://flagcdn.com/w40/pr.png
+QAT,Qatar,161.739955577,2.695122,https://flagcdn.com/w40/qa.png
+ROU,Romania,177.883883009,18.956666,https://flagcdn.com/w40/ro.png
+SRB,Serbia,39.655949731,6.760087,https://flagcdn.com/w40/rs.png
+SGP,Singapore,307.998545269,5.637022,https://flagcdn.com/w40/sg.png
+SVK,Slovak Republic,88.900883131,5.431752,https://flagcdn.com/w40/sk.png
+SVN,Slovenia,43.107506024,2.108732,https://flagcdn.com/w40/si.png
+ZAF,South Africa,346.709790459,59.893885,https://flagcdn.com/w40/za.png
+ESP,Spain,1196.15697128,47.615034,https://flagcdn.com/w40/es.png
+LCA,St. Lucia,1.807640741,0.179857,https://flagcdn.com/w40/lc.png
+SWE,Sweden,505.10378135,10.486941,https://flagcdn.com/w40/se.png
+CHE,Switzerland,694.11818638,8.769741,https://flagcdn.com/w40/ch.png
+TWN,Taiwan,791.61,23.57,https://flagcdn.com/w40/tw.png
+TJK,Tajikistan,8.271431485,9.952787,https://flagcdn.com/w40/tj.png
+THA,Thailand,401.296238228,71.69703,https://flagcdn.com/w40/th.png
+TUN,Tunisia,45.779494042,12.356117,https://flagcdn.com/w40/tn.png
+TUR,Turkiye,864.313810469,85.341241,https://flagcdn.com/w40/tr.png
+UGA,Uganda,32.38718373,47.249585,https://flagcdn.com/w40/ug.png
+UKR,Ukraine,91.030967789,38,https://flagcdn.com/w40/ua.png
+GBR,United Kingdom,2927.911140917,66.971411,https://flagcdn.com/w40/gb.png
+USA,United States,18295.019,333.287557,https://flagcdn.com/w40/us.png
+UZB,Uzbekistan,86.196264755,35.6481,https://flagcdn.com/w40/uz.png
+ZMB,Zambia,21.251216799,20.017675,https://flagcdn.com/w40/zm.png

@@ -1,93 +1,93 @@
-country_code,Gold Medal,Silver Medal,Bronze Medal,Total
-USA,40,44,42,126
-CHN,39,27,24,90
-JPN,20,12,13,45
-AUS,18,19,16,53
-FRA,16,26,22,64
-NLD,15,7,12,34
-GBR,14,21,29,64
-KOR,13,9,10,32
-ITA,12,13,13,38
-DEU,11,13,8,32
-NZL,10,7,3,20
-CAN,9,7,11,27
-UZB,8,2,3,13
-HUN,6,7,6,19
-ESP,5,4,9,18
-SWE,4,4,3,11
-KEN,4,2,5,11
-NOR,4,1,3,8
-IRL,4,0,3,7
-BRA,3,7,10,20
-IRN,3,6,3,12
-UKR,3,5,4,12
-ROU,3,4,2,9
-GEO,3,3,1,7
-SRB,3,1,1,5
-BGR,3,0,3,6
-CZE,3,0,2,5
-DNK,2,2,5,9
-AZE,2,2,3,7
-HRV,2,2,3,7
-CUB,2,1,6,9
-BEL,2,1,5,8
-BRN,2,1,1,4
-SVN,2,1,0,3
-TWN,2,0,5,7
-AUT,2,0,3,5
-HKG,2,0,2,4
-PHL,2,0,2,4
-DZA,2,0,1,3
-IDN,2,0,0,2
-POL,1,4,5,10
-ISR,1,4,1,6
-KAZ,1,3,3,7
-JAM,1,3,2,6
-ZAF,1,3,2,6
-THA,1,3,2,6
-AIN,1,3,1,5
-ETH,1,3,0,4
-CHE,1,2,5,8
-ECU,1,2,2,5
-PRT,1,2,1,4
-GRC,1,1,6,8
-ARG,1,1,1,3
-EGY,1,1,1,3
-TUN,1,1,1,3
-BWA,1,1,0,2
-CHI,1,1,0,2
-LCA,1,1,0,2
-UGA,1,1,0,2
-DOM,1,0,2,3
-GUM,1,0,1,2
-MAR,1,0,1,2
-DMA,1,0,0,1
-PAK,1,0,0,1
-TUR,0,3,5,8
-MEX,0,3,2,5
-ARM,0,3,1,4
-COL,0,3,1,4
-KGZ,0,2,4,6
-PRK,0,2,4,6
-LTU,0,2,2,4
-IND,0,1,5,6
-MDA,0,1,3,4
-XKX,0,1,1,2
-CYP,0,1,0,1
-FJI,0,1,0,1
-JOR,0,1,0,1
-MNG,0,1,0,1
-PAN,0,1,0,1
-TJK,0,0,3,3
-ALB,0,0,2,2
-GRL,0,0,2,2
-MYS,0,0,2,2
-PRI,0,0,2,2
-CIV,0,0,1,1
-CPV,0,0,1,1
-EOR,0,0,1,1
-PER,0,0,1,1
-QAT,0,0,1,1
-SGP,0,0,1,1
-SVK,0,0,1,1
-ZMB,0,0,1,1
+Gold Medal,Silver Medal,Bronze Medal,Total,country_name,country_code
+40,44,42,126,United States of America (the),USA
+39,27,24,90,China,CHN
+20,12,13,45,Japan,JPN
+18,19,16,53,Australia ,AUS
+16,26,22,64,France ,FRA
+15,7,12,34,"Netherlands, Kingdom of the",NLD
+14,21,29,64,United Kingdom of Great Britain and Northern Ireland (the),GBR
+13,9,10,32,Korea (the Republic of) ,KOR
+12,13,13,38,Italy,ITA
+11,13,8,32,Germany,DEU
+10,7,3,20,New Zealand,NZL
+9,7,11,27,Canada,CAN
+8,2,3,13,Uzbekistan,UZB
+6,7,6,19,Hungary,HUN
+5,4,9,18,Spain,ESP
+4,4,3,11,Sweden,SWE
+4,2,5,11,Kenya,KEN
+4,1,3,8,Norway,NOR
+4,0,3,7,Ireland,IRL
+3,7,10,20,Brazil,BRA
+3,6,3,12,Iran (Islamic Republic of),IRN
+3,5,4,12,Ukraine,UKR
+3,4,2,9,Romania,ROU
+3,3,1,7,Georgia,GEO
+3,1,1,5,Serbia,SRB
+3,0,3,6,Bulgaria,BGR
+3,0,2,5,Czechia ,CZE
+2,2,5,9,Denmark,DNK
+2,2,3,7,Azerbaijan,AZE
+2,2,3,7,Croatia,HRV
+2,1,6,9,Cuba,CUB
+2,1,5,8,Belgium,BEL
+2,1,1,4,Bahrain,BHR
+2,1,0,3,Slovenia,SVN
+2,0,5,7,Taiwan (Province of China) ,TWN
+2,0,3,5,Austria,AUT
+2,0,2,4,Hong Kong,HKG
+2,0,2,4,Philippines (the),PHL
+2,0,1,3,Algeria,DZA
+2,0,0,2,Indonesia,IDN
+1,4,5,10,Poland,POL
+1,4,1,6,Israel,ISR
+1,3,3,7,Kazakhstan,KAZ
+1,3,2,6,Jamaica,JAM
+1,3,2,6,South Africa,ZAF
+1,3,2,6,Thailand,THA
+1,3,1,5,NA,NA
+1,3,0,4,Ethiopia,ETH
+1,2,5,8,Switzerland,CHE
+1,2,2,5,Ecuador,ECU
+1,2,1,4,Portugal,PRT
+1,1,6,8,Greece,GRC
+1,1,1,3,Argentina,ARG
+1,1,1,3,Egypt,EGY
+1,1,1,3,Tunisia,TUN
+1,1,0,2,Botswana,BWA
+1,1,0,2,Chile,CHL
+1,1,0,2,Saint Lucia,LCA
+1,1,0,2,Uganda,UGA
+1,0,2,3,Dominican Republic (the),DOM
+1,0,1,2,Guatemala,GTM
+1,0,1,2,Morocco,MAR
+1,0,0,1,Dominica,DMA
+1,0,0,1,Pakistan,PAK
+0,3,5,8,Türkiye,TUR
+0,3,2,5,Mexico,MEX
+0,3,1,4,Armenia,ARM
+0,3,1,4,Colombia,COL
+0,2,4,6,Kyrgyzstan,KGZ
+0,2,4,6,Korea (the Democratic People's Republic of) ,PRK
+0,2,2,4,Lithuania,LTU
+0,1,5,6,India,IND
+0,1,3,4,Moldova (the Republic of),MDA
+0,1,1,2,NA,NA
+0,1,0,1,Cyprus,CYP
+0,1,0,1,Fiji,FJI
+0,1,0,1,Jordan,JOR
+0,1,0,1,Mongolia,MNG
+0,1,0,1,Panama,PAN
+0,0,3,3,Tajikistan,TJK
+0,0,2,2,Albania,ALB
+0,0,2,2,Grenada,GRD
+0,0,2,2,Malaysia,MYS
+0,0,2,2,Puerto Rico,PRI
+0,0,1,1,Côte d'Ivoire ,CIV
+0,0,1,1,Cabo Verde ,CPV
+0,0,1,1,NA,NA
+0,0,1,1,Peru,PER
+0,0,1,1,Qatar,QAT
+0,0,1,1,Singapore,SGP
+0,0,1,1,Slovakia,SVK
+0,0,1,1,Zambia,ZMB
