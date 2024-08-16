@@ -5,9 +5,7 @@ library(tidyverse)
 library(gt)
 library(ggrepel)
 
-# countries_to_annotate <- c("USA", "CHN", "RUS", "FRA", "GER", "GBR", "JPN",
-#                           "AUS", "CAN", "BRA", "IND", "MEX", "ARG", "DOM",
-#                           "NZL","GEO","JAM")
+addResourcePath("fonts", "www/fonts")
 
 # vector of country names from countries to annotate
 countries_to_annotate <- c("United States", "China", "Russia", "France", "Germany", "United Kingdom", "Japan",
@@ -70,7 +68,7 @@ country_rollup <- function(df,
 }
 
 
-test_china <- function(df,rollup_flag){
+adjust_china <- function(df,rollup_flag){
     if(rollup_flag){
         return(country_rollup(df,"CHN",c("TWN","HKG"),"China (incl. HK and TWN)"))
     } else {
@@ -147,6 +145,7 @@ about_page <- page_fillable(
           "Paris 2024 Olympic Results from Kaggle"),
         a(href = "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD","GDP and Population from World Bank Open Data"),
         a(href = "https://flagpedia.net/download/api","Country flags from flagpedia.net"),
+        a(href = "https://wisabo.com/item/1/paris-2024-variable/","Official Paris 2024 font from Wisabo.com"),
         p(strong("Created by Art Steinmetz using R and Shiny from"), 
           a(href = "https://www.posit.co", "Posit.co. ")),
           p(a(href = "https://github.com/apsteinmetz/olympic.git","Code on Github. "),
@@ -163,6 +162,13 @@ about_page <- page_fillable(
 
 # UI ---------------------------------------------------------------------------
 ui <- page_navbar(
+    theme = bs_theme(
+        version = 5,
+        bg = "#e8ecf7", # bg color in logo
+        fg = "#000",
+        base_font = font_face(family = "Paris2024-Variable",
+                              src = "url('/fonts/Paris2024-Variable.ttf') format('truetype')")
+    ),
     # Application title
     title = banner,
     nav_panel(
@@ -189,7 +195,7 @@ server <- function(input, output) {
             mutate(Score_Wgt = Count * Weight) |>
             summarize(.by = c(country_code), across(starts_with("Score"),\(x) sum(x, na.rm = TRUE))) |> 
             left_join(macro_data, by = "country_code") |> 
-            test_china(input$big_china) |>
+            adjust_china(input$big_china) |>
             select(-country_code) |> 
             na.omit() |>
             # score per million people
