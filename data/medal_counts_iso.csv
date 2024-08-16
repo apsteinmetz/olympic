@@ -1,14 +1,14 @@
 Gold Medal,Silver Medal,Bronze Medal,Total,country_name,country_code
 40,44,42,126,United States of America (the),USA
-39,27,24,90,China,CHN
+40,27,24,91,China,CHN
 20,12,13,45,Japan,JPN
 18,19,16,53,Australia ,AUS
 16,26,22,64,France ,FRA
 15,7,12,34,"Netherlands, Kingdom of the",NLD
-14,21,29,64,United Kingdom of Great Britain and Northern Ireland (the),GBR
+14,22,29,65,United Kingdom of Great Britain and Northern Ireland (the),GBR
 13,9,10,32,Korea (the Republic of) ,KOR
-12,13,13,38,Italy,ITA
-11,13,8,32,Germany,DEU
+12,13,15,40,Italy,ITA
+12,13,8,33,Germany,DEU
 10,7,3,20,New Zealand,NZL
 9,7,11,27,Canada,CAN
 8,2,3,13,Uzbekistan,UZB
@@ -23,14 +23,14 @@ Gold Medal,Silver Medal,Bronze Medal,Total,country_name,country_code
 3,5,4,12,Ukraine,UKR
 3,4,2,9,Romania,ROU
 3,3,1,7,Georgia,GEO
+3,1,6,10,Belgium,BEL
+3,1,3,7,Bulgaria,BGR
 3,1,1,5,Serbia,SRB
-3,0,3,6,Bulgaria,BGR
 3,0,2,5,Czechia ,CZE
 2,2,5,9,Denmark,DNK
 2,2,3,7,Azerbaijan,AZE
 2,2,3,7,Croatia,HRV
 2,1,6,9,Cuba,CUB
-2,1,5,8,Belgium,BEL
 2,1,1,4,Bahrain,BHR
 2,1,0,3,Slovenia,SVN
 2,0,5,7,Taiwan (Province of China) ,TWN
@@ -38,9 +38,9 @@ Gold Medal,Silver Medal,Bronze Medal,Total,country_name,country_code
 2,0,2,4,Hong Kong,HKG
 2,0,2,4,Philippines (the),PHL
 2,0,1,3,Algeria,DZA
-2,0,0,2,Indonesia,IDN
+2,0,1,3,Indonesia,IDN
+1,5,1,7,Israel,ISR
 1,4,5,10,Poland,POL
-1,4,1,6,Israel,ISR
 1,3,3,7,Kazakhstan,KAZ
 1,3,2,6,Jamaica,JAM
 1,3,2,6,South Africa,ZAF
