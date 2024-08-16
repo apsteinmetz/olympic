@@ -42,6 +42,41 @@ change_weights <- function(dt=medals_data,g = 1,s = 1, b = 1){
     )
     return(left_join(select(dt,-Weight), medal_weights, by = "Medal"))
 }
+country_rollup <- function(df,
+                           main_country_code,
+                           other_country_codes,
+                           main_country_name) {
+    df |>
+        mutate(country_code = str_replace(
+            country_code,
+            paste(other_country_codes, collapse = "|"),
+            main_country_code
+        )) |>
+        mutate(
+            country_name = if_else(
+                country_code == main_country_code,
+                main_country_name,
+                country_name
+            )
+        ) |>
+        summarise(
+            .by = c(country_code, country_name),
+            Score_Wgt = sum(Score_Wgt),
+            GDP = sum(GDP),
+            population = sum(population)
+        ) |>
+        left_join(select(macro_data, country_code, flag_url)) |>
+        ungroup()
+}
+
+
+test_china <- function(df,rollup_flag){
+    if(rollup_flag){
+        return(country_rollup(df,"CHN",c("TWN","HKG"),"China (incl. HK and TWN)"))
+    } else {
+        return(df)
+    }
+}
 
 
 sort_countries <- function(dt,sort_by = c("medal_wgt","pop_wgt","gdp_wgt","all_wgt")){
@@ -86,7 +121,10 @@ sidebar_inputs <-   sidebar(
         "sorting",
         "Sort On:",
         choices = c("medal_wgt", "pop_wgt", "gdp_wgt", "all_wgt")
-    )
+        ),
+        # add checkbox
+        checkboxInput("big_china", "Rollup HK and Taiwan into China?", value = FALSE)
+    
 )
 
 banner <- div(img(
@@ -151,6 +189,7 @@ server <- function(input, output) {
             mutate(Score_Wgt = Count * Weight) |>
             summarize(.by = c(country_code), across(starts_with("Score"),\(x) sum(x, na.rm = TRUE))) |> 
             left_join(macro_data, by = "country_code") |> 
+            test_china(input$big_china) |>
             select(-country_code) |> 
             na.omit() |>
             # score per million people
