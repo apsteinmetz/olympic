@@ -5,7 +5,7 @@ library(tidyverse)
 library(gt)
 library(ggrepel)
 
-addResourcePath("fonts", "www/fonts")
+# addResourcePath("fonts", "www/fonts")
 
 # vector of country names from countries to annotate
 countries_to_annotate <- c("United States", "China", "Russia", "France", "Germany", "United Kingdom", "Japan",
@@ -167,7 +167,7 @@ ui <- page_navbar(
         bg = "#e8ecf7", # bg color in logo
         fg = "#000",
         base_font = font_face(family = "Paris2024-Variable",
-                              src = "url('/fonts/Paris2024-Variable.ttf') format('truetype')")
+                              src = "url('/Paris2024-Variable.ttf') format('truetype')")
     ),
     # Application title
     title = banner,
