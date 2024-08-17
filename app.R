@@ -5,6 +5,12 @@ library(tidyverse)
 library(gt)
 library(ggrepel)
 
+if (Sys.info()[["sysname"]]=="Linux"){
+    dir.create('~/.fonts')
+    system('cp www/*.ttf ~/.fonts')
+    system('fc-cache -f ~/.fonts')
+}
+
 # addResourcePath("fonts", "www/fonts")
 
 # vector of country names from countries to annotate
