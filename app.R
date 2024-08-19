@@ -5,13 +5,13 @@ library(tidyverse)
 library(gt)
 library(ggrepel)
 
-if (Sys.info()[["sysname"]]=="Linux"){
-    dir.create('~/.fonts')
-    system('cp www/*.ttf ~/.fonts')
-    system('fc-cache -f ~/.fonts')
+# use Paris2024-Variable font if on a windows machine
+if (Sys.info()[['sysname']] == "Windows") {
+    local_base_font = bslib::font_face(family = "Paris2024-Variable",
+                                       src = "url('/Paris2024-Variable.ttf') format('truetype')")
+} else { # shinyapps.io uses Ubuntu and can't use local font file 
+    local_base_font = bslib::font_google("Turret Road")
 }
-
-# addResourcePath("fonts", "www/fonts")
 
 # vector of country names from countries to annotate
 countries_to_annotate <- c("United States", "China", "Russia", "France", "Germany", "United Kingdom", "Japan",
@@ -182,7 +182,7 @@ ui <- page_navbar(
         page_sidebar(
             # Sidebar with a slider input for number of bins
             sidebar = sidebar_inputs,
-            layout_columns(col_widths = c(9, 3),
+            layout_columns(col_widths = c(7, 5),
                            card(gt_output("table")),
                            card(card(plotOutput("gdpscatter")),
                                 card(plotOutput("popscatter"))
@@ -231,6 +231,9 @@ server <- function(input, output) {
                 columns = c(Score_per_MM_pop, Score_per_GDP_USD_BN, Score_per_capita_GDP),
                 decimals = 2
             ) |>
+            cols_width(is.numeric ~ px(100)) |>
+            cols_width(country_name ~ px(150)) |>
+            cols_width(flag_url ~ px(100)) |>
             data_color(
                 columns = c(col_to_color()),
                 method = "numeric",
