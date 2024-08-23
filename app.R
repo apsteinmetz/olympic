@@ -239,10 +239,14 @@ server <- function(input, output) {
                 method = "numeric",
                 palette = "viridis") |> 
             tab_header(title = "Medal Scoreboard") |> 
-            text_transform(
-                locations = cells_body(columns = flag_url),
-                fn = function(x) { web_image(url = x, height = 30) }
+            fmt_image(
+                columns = "flag_url",
+                width = px(40)
             ) |>
+#            text_transform(
+#                locations = cells_body(columns = flag_url),
+#                fn = function(x) { web_image(url = x, height = 30) }
+#            ) |>
             cols_label(
                 flag_url = "Flag",
                 Score_Wgt = "Medal Score",
